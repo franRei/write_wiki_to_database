@@ -58,7 +58,7 @@ public class Read_XML {
                         if(title.isCharacters()){
                             String wiki = title.asCharacters().getData();
 
-                            //if(findPattern(wiki, suche)) {
+                            
                                 count++;
                                 System.out.println(wiki + " " + count);
                                 String set_wiki =  wiki;
@@ -86,26 +86,15 @@ public class Read_XML {
                                     System.out.println(count_text);
                                 }
                                 database.open_Database(set_wiki, set_description);
-                           // }
                         }
-
                     }
-
                 }
-
-
                 System.out.println("count: " + count);
                 System.out.println("count_description: " + count_text);
-
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (XMLStreamException e) {
                 e.printStackTrace();
-            } /*catch (SQLException e) {
-                e.printStackTrace();
-            }*/
-
+            } 
         }
     }
-
-
