@@ -59,42 +59,40 @@ public class Read_XML {
                             String wiki = title.asCharacters().getData();
 
                             
-                                count++;
-                                System.out.println(wiki + " " + count);
-                                String set_wiki =  wiki;
-                                String set_description = "";
+                            count++;
+                            System.out.println(wiki + " " + count);
+                            String set_wiki =  wiki;
+                            String set_description = "";
 
-                                if(findNext(eventReader, "text")){
+                            if(findNext(eventReader, "text")){
 
-                                    XMLEvent text = eventReader.nextEvent();
-                                    String description="";
-                                    System.out.println("TEST");
-                                    while(text.isCharacters()){
-                                        description += text.asCharacters().getData();
+                                XMLEvent text = eventReader.nextEvent();
+                                String description="";
+                                System.out.println("TEST");
+                                while(text.isCharacters()){
+                                    description += text.asCharacters().getData();
 
-                                        if(eventReader.hasNext()){
-                                            text = eventReader.nextEvent();
-                                        }
-                                        else{
-                                            break;
-                                        }
+                                    if(eventReader.hasNext()){
+                                        text = eventReader.nextEvent();
                                     }
-
-                                    set_description = description;
-
-                                    count_text++;
-                                    System.out.println(count_text);
+                                    else{
+                                        break;
+                                    }
                                 }
-                                database.open_Database(set_wiki, set_description);
-                        }
+                                set_description = description;
+                                count_text++;
+                                System.out.println(count_text);
+                            }
+                            database.open_Database(set_wiki, set_description);
                     }
                 }
-                System.out.println("count: " + count);
-                System.out.println("count_description: " + count_text);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (XMLStreamException e) {
-                e.printStackTrace();
-            } 
-        }
+            }
+            System.out.println("count: " + count);
+            System.out.println("count_description: " + count_text);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (XMLStreamException e) {
+						e.printStackTrace();
+        } 
     }
+}
